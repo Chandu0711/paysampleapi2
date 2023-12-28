@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="88771201-c1ba-40d2-8232-8bac02ee7f94" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="paysampleapi2Flow" doc:id="38ad308f-fa48-4f3d-acd0-b433ee970c50" >
+		<http:listener doc:name="Listener" doc:id="1529acd3-69ba-4253-b0ab-dc1b7f86e141" config-ref="HTTP_Listener_config" path="/pay2" allowedMethods="POST"/>
+		<logger level="INFO" doc:name="Logger" doc:id="7141232a-72c5-4fb7-8d6e-bdc7ecbbab71" message="#[payload]"/>
+		<logger level="INFO" doc:name="Logger" doc:id="937db951-e634-4e49-b469-b4d444fab7ae" message="#[payload.colleges.enrollmentStatus]"/>
+		<logger level="INFO" doc:name="Logger" doc:id="f8c73e28-2e37-4ed1-bbb4-025eb83740de" message="#[payload.colleges.branchDetails.code]"/>
+		<logger level="INFO" doc:name="Logger" doc:id="f85d9bfd-ec3e-412c-9655-d46a2a572658" />
+	</flow>
+</mule>
